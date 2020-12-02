@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 
 function Header () {
+	const [searchText, setSearchText] = useState('')
     return(
         <header className="main-navigation">
 			<nav className="navbar navbar-expand-lg navbar-light">
@@ -13,7 +14,9 @@ function Header () {
                         <label className="label-search">Search</label>
                         <label>
                             <span className="screen-reader-text">Search for...</span>
-                            <input type="search" className="search-field" placeholder="By topic, format, language, motion" value="" name="s" title="" />
+							<input 
+								onChange={(e) => setSearchText(e.target.value) }
+								type="search" className="search-field" placeholder="By topic, format, language, motion" value={searchText} name="s" title="" />
                         </label>
                         <button type="submit" className="search-submit button"><img src="images/search-icon.svg" alt="search-icon"/></button>
                     </form>

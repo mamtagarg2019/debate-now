@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 
 function Login () {
-
+    const [ info, setInfo] = useState({})
     return (
         <>
         <section className="join-debate-world">
@@ -21,18 +21,22 @@ function Login () {
 							<form action="" className="join-dob">
 								<div className="form-group mb-15">
 									<label>Your email</label>
-									<input type="text" placeholder="example@gmail.com" className="form-control"/>
+                                    <input
+                                        onChange={(e) => setInfo({ ...info, 'email' : e.target.value })} 
+                                        type="text" placeholder="example@gmail.com" className="form-control"/>
 								</div>
 								
 								<div className="form-group">
 									<label>Create password</label>
 									<p>Passwords should be at least 8 characters long and should contain a mixture of letters, numbers, and other characters.</p>
-									<input type="password" placeholder="" className="form-control"/>
+                                    <input 
+                                        onChange={(e) => setInfo({ ...info, 'password' : e.target.value })}
+                                        type="password" placeholder="" className="form-control"/>
 								</div>
 
-								<button type="submit" className="btn">create account</button>
+								<button type="submit" className="btn" onClick={ () => console.log(info)}>create account</button>
 
-								<a href="#" className="back-btn">back</a>
+								<a href="/" className="back-btn" >back</a>
 							</form>
 							
 						</div>

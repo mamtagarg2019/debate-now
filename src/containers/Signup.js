@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 
 function Signup () {
+    const [ info, setInfo] = useState({})
     return(
         <>
         <section className="join-debate-world">
@@ -20,35 +21,41 @@ function Signup () {
 							<form action="" className="join-dob">
 								<div className="form-group">
 									<label>Your email</label>
-									<input type="text" placeholder="example@gmail.com" className="form-control"/>
+                                    <input onChange={(e) => setInfo({...info, 'email': e.target.value })} 
+                                        type="text" placeholder="example@gmail.com" className="form-control"/>
 								</div>
 								<div className="form-group">
 									<label>Your mobile</label>
-									<input type="number" placeholder="9875480015" className="form-control"/>
+                                    <input onChange={(e) => setInfo({...info, 'phone': e.target.value })} 
+                                        type="number" placeholder="9875480015" className="form-control"/>
 								</div>
 								<div className="row form-group">
 									<div className="col">	
 										<label>First name*</label>
-										<input type="text" placeholder="" className="form-control"/>
+                                        <input onChange={(e) => setInfo({...info, 'firstName': e.target.value })} 
+                                            type="text" placeholder="" className="form-control"/>
 									</div>
 									<div className="col">	
 										<label>Middle name</label>
-										<input type="text" placeholder="" className="form-control"/>
+                                        <input onChange={(e) => setInfo({...info, 'middleName': e.target.value })} 
+                                            type="text" placeholder="" className="form-control"/>
 									</div>
 									<div className="col">	
 										<label>Last name*</label>
-										<input type="text" placeholder="" className="form-control"/>
+                                        <input onChange={(e) => setInfo({...info, 'lastName': e.target.value })} 
+                                            type="text" placeholder="" className="form-control"/>
 									</div>
 								</div>
 								<div className="form-group">
 									<label>Create password</label>
 									<p>Passwords should be at least 8 characters long and should contain a mixture of letters, numbers, and other characters.</p>
-									<input type="password" placeholder="" className="form-control"/>
+                                    <input onChange={(e) => setInfo({...info, 'password': e.target.value })} 
+                                        type="password" placeholder="" className="form-control"/>
 								</div>
 
-								<button type="submit" className="btn">create account</button>
+								<button type="submit" className="btn" onClick={() => console.log(info)}>create account</button>
 
-								<a href="#" className="back-btn">back</a>
+								<a href="/" className="back-btn">back</a>
 							</form>
 						</div>
 					</div>

@@ -1,8 +1,9 @@
-import React from 'react'
-
+import React, { useState } from 'react'
 
 
 function LandingPage () {
+    const [info, setInfo] = useState('Debate')
+
     return(
         <section className="join-debate-world">
 			<div className="container">
@@ -19,32 +20,32 @@ function LandingPage () {
 						<div className="join-debate-content">
 							<h5>Join DebateNow as a </h5>
 							<ul className="d-flex align-items-center">
-								<li><a className="nav-link custom-btn active" href="javascript:void(0);">Debater</a></li>
-								<li><a className="nav-link custom-btn" href="javascript:void(0);">Parent</a></li>
-								<li><a className="nav-link custom-btn" href="javascript:void(0);">Teacher</a></li>
+								<li onClick={() => setInfo('Debate')}><a className={info === 'Debate' ? "nav-link custom-btn active" : "nav-link custom-btn"} href="javascript:void(0);">Debater</a></li>
+								<li onClick={() => setInfo('Parent')}><a className={info === 'Parent' ? "nav-link custom-btn active" : "nav-link custom-btn"} href="javascript:void(0);">Parent</a></li>
+								<li onClick={() => setInfo('Teacher')}><a className={info === 'Teacher' ? "nav-link custom-btn active" : "nav-link custom-btn"} href="javascript:void(0);">Teacher</a></li>
 							</ul>
 							
 							<div className="join-dob">
 							<h5>What is your date of birth?</h5>
 								<form className="">
-									<select  id ="month" name = "mm" onchange="change_month(this)">
+									<select  id="month" name = "mm" defaultValue={'02'}>
 									</select>
-									<select id ="day" name = "dd" >
+									<select id="day" name = "dd" defaultValue={'12'} >
 									</select>
-									<select id ="year" name = "yyyy" onchange="change_year(this)">
+									<select id="year" name = "yyyy" defaultvalue={'2020'}>
 									</select>
 								</form>
 							</div>	
 							
 							<div className="debate-social">
 								<ul>
-									<li><a href="javascript:void(0);">
+									<li><a href="/">
 										<span><img src="images/zoom.svg" alt="Zoom"/></span>
 										Continue with Zoom</a></li>
-									<li><a href="javascript:void(0);">
+									<li><a href="/">
 										<span><img src="images/google-plus.svg" alt="Google"/></span>
 										Continue with Google</a></li>
-									<li><a href="javascript:void(0);">
+									<li><a href="/">
 										<span><img src="images/fb.svg" alt="Facebook"/></span>
 										Continue with Facebook</a></li>
 									<li><a href="/login">
