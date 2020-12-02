@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import { connect } from 'react-redux';
+import { commonAction } from './actions/common'
+import {
+  BrowserRouter as Router, Switch, Route,
+} from "react-router-dom";
+import Header from './components/common/Header'
+import Footer from './components/common/Footer'
+
+function App(props) {
+  console.log( props, "props")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+		  <div className="header-wrap">
+        <Header/>
+		    <div className="container">
+          {props.children}
+        </div>
+      </div>
+      <Footer/>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => ({ ...state })
+
+const mapDispatchToProps = dispatch => ({
+  commonAction: () => dispatch(commonAction())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
