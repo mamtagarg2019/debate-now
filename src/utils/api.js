@@ -44,11 +44,12 @@ export function logOut () {
 }
 
 export function isLoggedIn() {
-	let session = getObject('session');
+	let session = getObject('user');
 
-	let token = session && session.accessToken;
+	//let token = session && session.accessToken;
 
-	return session && session.accessToken;
+   // let name = session && session.sso_username.split('.');
+    return session
 }
 
 export function getHeaders () {
@@ -70,11 +71,11 @@ export function saveObject (key, value) {
 }
 
 export function getObject(key) {
-	if(window && window.localStorage) {
-		return window.localStorage.getObject(key);
-	}
+	// if(window && window.localStorage) {
+	// 	return window.localStorage.getObject(key);
+	// }
 
-	return null;
+    return localStorage.getItem(key)
 }
 
 export function generateUrl (path) {

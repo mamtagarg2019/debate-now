@@ -3,6 +3,8 @@ import { connectAdvanced } from 'react-redux'
 import { checkUserEmail, login} from '../api/auth'
 import Loader from 'react-loader-spinner'
 
+
+
 function Login () {
 	const [ info, setInfo] = useState({})
 	const [ emailVerified, setEmailVerified] = useState(false)
@@ -56,12 +58,12 @@ function Login () {
 					<div className="col-12 col-lg-5 d-flex align-items-center justify-content-center">
 						<div className="join-debate-content">							
 							<form className="join-dob">
-								<div className="form-group mb-15">
+								{!emailVerified ? <div className="form-group mb-15">
 									<label>Your email</label>
                                     <input
                                         onChange={(e) => setInfo({ ...info, 'email' : e.target.value })} 
                                         type="text" placeholder="example@gmail.com" className="form-control"/>
-								</div>
+								</div> : null}
 								
 								{emailVerified ? <div className="form-group">
 									<label>Create password</label>

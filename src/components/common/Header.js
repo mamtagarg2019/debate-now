@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
-
+import React, { useState, useEffect } from 'react'
+import { isLoggedIn } from '../../utils/api'
 
 function Header () {
 	const [searchText, setSearchText] = useState('')
+	
+	useEffect(() => {
+		let res = isLoggedIn()
+		console.log(JSON.parse(res), "res")
+	}, [])
+	
     return(
         <header className="main-navigation">
 			<nav className="navbar navbar-expand-lg navbar-light">
