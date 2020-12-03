@@ -1,8 +1,38 @@
 import React, { useState } from 'react'
-
+import { connectAdvanced } from 'react-redux'
+import { checkUserEmail, login} from '../api/auth'
 
 function Login () {
-    const [ info, setInfo] = useState({})
+	const [ info, setInfo] = useState({})
+	const [ emailVerified, setEmailVerified] = useState(false)
+	const [ message, setMessage] = useState('')
+		
+	const submit = () => {
+		setMessage("")
+		if(emailVerified){
+			login(info)
+				.then(res => {
+					if(res.message){
+						setMessage(res.message)
+					}
+					else {
+						setInfo({})
+						localStorage.setItem('user', JSON.stringify(res))
+					}
+				})
+		}	
+		else {
+			checkUserEmail(info)
+			.then(res => {
+				if(res.message){
+					setMessage(res.message)
+				}
+				else 
+					setEmailVerified(true)
+			})
+		} 
+	}
+
     return (
         <>
         <section className="join-debate-world">
@@ -18,7 +48,7 @@ function Login () {
 					
 					<div className="col-12 col-lg-5 d-flex align-items-center justify-content-center">
 						<div className="join-debate-content">							
-							<form action="" className="join-dob">
+							<form className="join-dob">
 								<div className="form-group mb-15">
 									<label>Your email</label>
                                     <input
@@ -26,16 +56,16 @@ function Login () {
                                         type="text" placeholder="example@gmail.com" className="form-control"/>
 								</div>
 								
-								<div className="form-group">
+								{emailVerified ? <div className="form-group">
 									<label>Create password</label>
 									<p>Passwords should be at least 8 characters long and should contain a mixture of letters, numbers, and other characters.</p>
                                     <input 
                                         onChange={(e) => setInfo({ ...info, 'password' : e.target.value })}
                                         type="password" placeholder="" className="form-control"/>
-								</div>
+								</div> : null}
 
-								<button type="submit" className="btn" onClick={ () => console.log(info)}>create account</button>
-
+								<button type="button" className="btn" onClick={submit}>Login</button>
+								{message != '' ? <p>{message}</p>: null}
 								<a href="/" className="back-btn" >back</a>
 							</form>
 							

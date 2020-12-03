@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {  
     API_URL
-} from './constants';
+} from '../constants';
 
 import moment from 'moment'
 
@@ -52,9 +52,9 @@ export function isLoggedIn() {
 }
 
 export function getHeaders () {
-	let session = getObject('session');
+	//let session = getObject('session');
 	return {
-		authorization: session && session.accessToken || null
+		authorization: null
 	}
 }
 
@@ -78,7 +78,7 @@ export function getObject(key) {
 }
 
 export function generateUrl (path) {
-	return API_URL + path + '?api_key=' + apiKey;
+	return API_URL + path;
 }
 
 export function apiReq (endPoint, data, method, headers, config) {
@@ -89,7 +89,7 @@ export function apiReq (endPoint, data, method, headers, config) {
 		...headers
   	}
 
-  	if(method == 'get') {
+  	if(method === 'get') {
   		data = {
   			params: data,
   			headers,

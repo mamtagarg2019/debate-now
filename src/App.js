@@ -8,7 +8,6 @@ import Header from './components/common/Header'
 import Footer from './components/common/Footer'
 
 function App(props) {
-  console.log( props, "props")
   return (
     <div className="wrapper">
 		  <div className="header-wrap">
