@@ -12,8 +12,8 @@ function App(props) {
   return (
     <div className="wrapper">
 		  <div className="header-wrap">
-        <Header/>
 		    <div className="container">
+        <Header/>
           {props.children}
         </div>
       </div>
