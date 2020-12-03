@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { signup } from '../api/auth' 
-
+import React, { useState  } from 'react';
+import { signup } from '../api/auth';
+import Loader from 'react-loader-spinner';
 
 function Signup () {
 	const [ info, setInfo] = useState({})
 	const [ message, setMessage] = useState('')
+	const [ loading, setLoading] = useState(false)
 
 	const submit = () => {
 		setMessage('')
@@ -16,8 +17,9 @@ function Signup () {
 					setMessage(message)
 				}
 				else {
-					
+					setInfo({})	
 				}
+				setLoading(false)
 			})
 	}
 
@@ -71,7 +73,8 @@ function Signup () {
                                         type="password" placeholder="" className="form-control"/>
 								</div>
 
-								<button type="button" className="btn" onClick={submit}>Create Account</button>
+								<button type="button" className="btn" onClick={submit}>
+									{loading ? <Loader type="ThreeDots" color="#FFFFFF" height={30} width={50} /> : 'Create Account' } </button>
 								{message != '' ? <p>{message}</p>: null}
 								<a href="/" className="back-btn">back</a>
 							</form>

@@ -1,35 +1,42 @@
 import React, { useState } from 'react'
 import { connectAdvanced } from 'react-redux'
 import { checkUserEmail, login} from '../api/auth'
+import Loader from 'react-loader-spinner'
 
 function Login () {
 	const [ info, setInfo] = useState({})
 	const [ emailVerified, setEmailVerified] = useState(false)
 	const [ message, setMessage] = useState('')
+	const [ loading, setLoading] = useState(false )
 		
 	const submit = () => {
 		setMessage("")
+		setLoading(true)
 		if(emailVerified){
 			login(info)
 				.then(res => {
 					if(res.message){
 						setMessage(res.message)
+						setLoading(false)
 					}
 					else {
 						setInfo({})
 						localStorage.setItem('user', JSON.stringify(res))
+						setLoading(false)
 					}
 				})
 		}	
 		else {
 			checkUserEmail(info)
-			.then(res => {
-				if(res.message){
-					setMessage(res.message)
-				}
-				else 
-					setEmailVerified(true)
-			})
+				.then(res => {
+					if(res.message){
+						setMessage(res.message)
+						setLoading(false)
+					}
+					else 
+						setEmailVerified(true)
+						setLoading(false)
+				})
 		} 
 	}
 
@@ -64,7 +71,8 @@ function Login () {
                                         type="password" placeholder="" className="form-control"/>
 								</div> : null}
 
-								<button type="button" className="btn" onClick={submit}>Login</button>
+								<button type="button" className="btn" onClick={submit}>
+									{loading ? <Loader type="ThreeDots" color="#FFFFFF" height={30} width={50} /> : 'Login' } </button>
 								{message != '' ? <p>{message}</p>: null}
 								<a href="/" className="back-btn" >back</a>
 							</form>
