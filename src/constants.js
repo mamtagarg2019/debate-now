@@ -1,0 +1,1 @@
+export const API_URL = `http://debatenow.trigma.in:3000/api/`
