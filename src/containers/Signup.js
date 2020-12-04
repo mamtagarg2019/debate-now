@@ -10,7 +10,7 @@ const debater_info = {
 	"debater_zoom_link":""
  }
 
-function Signup () {
+function Signup (props) {
 	const [ info, setInfo] = useState({})
 	const [ message, setMessage] = useState('')
 	const [ loading, setLoading] = useState(false)
@@ -26,6 +26,7 @@ function Signup () {
 				}
 				else {
 					setInfo({})	
+					props.history.push('/login')
 				}
 				setLoading(false)
 			})

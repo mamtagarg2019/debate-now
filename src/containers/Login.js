@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { checkUserEmail, login} from '../api/auth'
 import Loader from 'react-loader-spinner'
 
-function Login () {
+
+function Login (props) {
 	const [ info, setInfo] = useState({})
 	const [ emailVerified, setEmailVerified] = useState(false)
 	const [ message, setMessage] = useState('')
@@ -22,6 +23,7 @@ function Login () {
 						setInfo({})
 						localStorage.setItem('user', JSON.stringify(res))
 						setLoading(false)
+						props.history.push('/create_debate')
 					}
 				})
 		}	
