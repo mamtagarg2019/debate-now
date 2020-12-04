@@ -20,9 +20,9 @@ function LandingPage () {
 						<div className="join-debate-content">
 							<h5>Join DebateNow as a </h5>
 							<ul className="d-flex align-items-center">
-								<li onClick={() => setInfo('Debate')}><a className={info === 'Debate' ? "nav-link custom-btn active" : "nav-link custom-btn"} href="javascript:void(0);">Debater</a></li>
-								<li onClick={() => setInfo('Parent')}><a className={info === 'Parent' ? "nav-link custom-btn active" : "nav-link custom-btn"} href="javascript:void(0);">Parent</a></li>
-								<li onClick={() => setInfo('Teacher')}><a className={info === 'Teacher' ? "nav-link custom-btn active" : "nav-link custom-btn"} href="javascript:void(0);">Teacher</a></li>
+								<li onClick={() => setInfo('Debate')}><a className={info === 'Debate' ? "nav-link custom-btn active" : "nav-link custom-btn"}>Debater</a></li>
+								<li onClick={() => setInfo('Parent')}><a className={info === 'Parent' ? "nav-link custom-btn active" : "nav-link custom-btn"}>Parent</a></li>
+								<li onClick={() => setInfo('Teacher')}><a className={info === 'Teacher' ? "nav-link custom-btn active" : "nav-link custom-btn"}>Teacher</a></li>
 							</ul>
 							
 							<div className="join-dob">

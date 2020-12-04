@@ -8,7 +8,7 @@ import LandingPage from './containers/LandingPage'
 
 const AppRoutes = () => {
     return (
-    <Router>
+    <Router >
       <Switch>
         <Route exact path="/" component={LandingPage}/>
         <Route path="/login" component={Login}/>

@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-import { connectAdvanced } from 'react-redux'
 import { checkUserEmail, login} from '../api/auth'
 import Loader from 'react-loader-spinner'
-
-
 
 function Login () {
 	const [ info, setInfo] = useState({})

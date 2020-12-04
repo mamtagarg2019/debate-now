@@ -2,6 +2,14 @@ import React, { useState  } from 'react';
 import { signup } from '../api/auth';
 import Loader from 'react-loader-spinner';
 
+const debater_info = {
+	"name":"",
+	"username":"",
+	"debater_bio":"testing",
+	"debater_proficiency_level":"Expert",
+	"debater_zoom_link":""
+ }
+
 function Signup () {
 	const [ info, setInfo] = useState({})
 	const [ message, setMessage] = useState('')
@@ -9,7 +17,7 @@ function Signup () {
 
 	const submit = () => {
 		setMessage('')
-		signup(info)
+		signup({ ...info, ...debater_info })
 			.then(res => {
 				console.log( res, res.message, "res")
 				setMessage(message)

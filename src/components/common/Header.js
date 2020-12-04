@@ -12,7 +12,7 @@ function Header () {
     return(
         <header className="main-navigation">
 			<nav className="navbar navbar-expand-lg navbar-light">
-			<a className="navbar-brand" href="javascript:void(0);"><img src="images/logo.svg" alt="logo" /></a>
+			<a className="navbar-brand" href="/"><img src="images/logo.svg" alt="logo" /></a>
 			<span style={{ fontSize:'30px', 'cursor': 'pointer' }} onClick={() => {}} className="menu-icon">&#9776;</span>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
 				<div className="header_search">
@@ -29,7 +29,7 @@ function Header () {
 			    </div>
 				<ul className="navbar-nav">
 				  <li className="nav-item active">
-					<a className="nav-link" href="javascript:void(0);">Faq <span className="sr-only">(current)</span></a>
+					<a className="nav-link" href="/">Faq <span className="sr-only">(current)</span></a>
 				  </li>
 				  <li className="nav-item">
 					<a className="nav-link" href="/login"><img src="images/user.svg" alt="user" className="mr-2"/>Log In</a>
